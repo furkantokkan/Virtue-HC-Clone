@@ -57,17 +57,17 @@ public class PlayerController : MonoBehaviour
                 int currentAmount = currentCharacter.characterSize;
                 currentAmount++;
                 currentCharacter.characterSize = currentAmount;
-                GameManager.Instance.onCharacterTake(currentAmount);
+                GameManager.Instance.onCharacterTake?.Invoke(currentAmount);
+                GameManager.Instance.onRightCharacterTake?.Invoke();
                 Destroy(other.gameObject);
             }
             else if(targetCharacter.currentCharacterID == Character.CharacterID.Stack &&
                 targetCharacter.currentMaterial.name != currentCharacter.currentMaterial.name)
             {
                 int currentAmount = currentCharacter.characterSize;
-                print(currentCharacter.characterSize);
-                currentAmount--;
                 currentCharacter.characterSize = currentAmount;
                 GameManager.Instance.onCharacterTake(currentAmount);
+                GameManager.Instance.onWrongCharacterTake?.Invoke();
                 Destroy(other.gameObject);
                 print("Not same material");
             }

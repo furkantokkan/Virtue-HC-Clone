@@ -56,8 +56,12 @@ public class GameManager : MonoBehaviour
     public float horizontalSpeed = 20f;
     public float forwardSpeed = 5f;
     public float playerSmooth = 8f;
+    public float playerGrowSize = 0.25f;
 
     public Action<int> onCharacterTake;
+    public Action onRightCharacterTake;
+    public Action onWrongCharacterTake;
+
 
     private void Awake()
     {
