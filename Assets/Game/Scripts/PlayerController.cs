@@ -42,4 +42,37 @@ public class PlayerController : MonoBehaviour
                 InputManager.Instance.GetDirection().x * GameManager.Instance.horizontalSpeed, 0f, 0f));
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Character>() != null)
+        {
+            Character targetCharacter = other.GetComponent<Character>();
+            Character currentCharacter = GetComponent<Character>();
+
+            if (targetCharacter.currentCharacterID == Character.CharacterID.Stack &&
+                targetCharacter.currentMaterial.name == currentCharacter.currentMaterial.name)
+            {
+                print("Same material");
+                int currentAmount = currentCharacter.characterSize;
+                currentAmount++;
+                currentCharacter.characterSize = currentAmount;
+                GameManager.Instance.onCharacterTake(currentAmount);
+                Destroy(other.gameObject);
+            }
+            else if(targetCharacter.currentCharacterID == Character.CharacterID.Stack &&
+                targetCharacter.currentMaterial.name != currentCharacter.currentMaterial.name)
+            {
+                int currentAmount = currentCharacter.characterSize;
+                print(currentCharacter.characterSize);
+                currentAmount--;
+                currentCharacter.characterSize = currentAmount;
+                GameManager.Instance.onCharacterTake(currentAmount);
+                Destroy(other.gameObject);
+                print("Not same material");
+            }
+        }
+     
+        
+    }
 }

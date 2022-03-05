@@ -52,9 +52,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Settings")]
     public GameState currentState = GameState.BeforeStart;
+    public Material[] allMaterails;
     public float horizontalSpeed = 20f;
     public float forwardSpeed = 5f;
     public float playerSmooth = 8f;
+
+    public Action<int> onCharacterTake;
 
     private void Awake()
     {

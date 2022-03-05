@@ -13,4 +13,11 @@ public class Character : MonoBehaviour
     }
 
     public CharacterID currentCharacterID = CharacterID.None;
+    public int characterSize = 1;
+    public Material currentMaterial;
+
+    private void Start()
+    {
+        currentMaterial = GetComponent<MeshRenderer>().material;
+    }
 }
