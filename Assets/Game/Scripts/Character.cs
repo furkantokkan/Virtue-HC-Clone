@@ -33,8 +33,8 @@ public class Character : MonoBehaviour
         if (currentCharacterID == CharacterID.Player)
         {
             transform.localScale = new Vector3(transform.localScale.x + GameManager.Instance.playerGrowSize,
-                transform.localScale.x + GameManager.Instance.playerGrowSize,
-                transform.localScale.x + GameManager.Instance.playerGrowSize);
+                transform.localScale.y + GameManager.Instance.playerGrowSize,
+                transform.localScale.z + GameManager.Instance.playerGrowSize);
         }
     }
     private void OnWrongTake()
@@ -42,8 +42,8 @@ public class Character : MonoBehaviour
         if (currentCharacterID == CharacterID.Player)
         {
             transform.localScale = new Vector3(transform.localScale.x - GameManager.Instance.playerGrowSize,
-                transform.localScale.x - GameManager.Instance.playerGrowSize,
-                transform.localScale.x - GameManager.Instance.playerGrowSize);
+                transform.localScale.y - GameManager.Instance.playerGrowSize,
+                transform.localScale.z - GameManager.Instance.playerGrowSize);
         }
     }
 }

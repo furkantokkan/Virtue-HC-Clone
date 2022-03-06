@@ -199,12 +199,22 @@ PrefabInstance:
     - target: {fileID: 4177966510046494769, guid: d6a4775584c5cc745915ac13a5b01ee3,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5999260726620675066, guid: d6a4775584c5cc745915ac13a5b01ee3,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7749331649653506110, guid: d6a4775584c5cc745915ac13a5b01ee3,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 7749331649653506110, guid: d6a4775584c5cc745915ac13a5b01ee3,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a4775584c5cc745915ac13a5b01ee3, type: 3}
