@@ -97,6 +97,8 @@ public class UIManager : MonoBehaviour
 
             ShowFPS();
         }
+
+        UpdateProgressBar(GameManager.Instance.actor.transform.position.z, 1f);
     }
 
     /// <summary>
@@ -175,7 +177,10 @@ public class UIManager : MonoBehaviour
 
         if (inputCounter >= 1 && inputCounter < 3)
         {
-            GameManager.Instance.currentState = GameManager.GameState.Normal;
+            if (GameManager.Instance.currentState != GameManager.GameState.Fight)
+            {
+                GameManager.Instance.currentState = GameManager.GameState.Normal;
+            }
 
             if (GameManager.Instance.GiveInputOnFirstClick)
             {

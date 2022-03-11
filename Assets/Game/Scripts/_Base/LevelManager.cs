@@ -260,7 +260,7 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator CheckIsLevelRendered(GameObject level)
     {
-        while (!level.GetComponent<Renderer>().isVisible)
+        while (!level.GetComponentInChildren<Renderer>().isVisible)
         {
             yield return null;
         }

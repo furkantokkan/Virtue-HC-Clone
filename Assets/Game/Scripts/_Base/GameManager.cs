@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
         Normal,
         Failed,
         Victory,
-        Pause
+        Pause,
+        Fight
     }
 
     public const float MAX_X = 4.25f;
@@ -63,6 +64,9 @@ public class GameManager : MonoBehaviour
     public Action onRightCharacterTake;
     public Action onWrongCharacterTake;
 
+    public Transform actor;
+    public Transform finishLine;
+
 
     private void Awake()
     {
@@ -91,5 +95,28 @@ public class GameManager : MonoBehaviour
         }
 
         Application.targetFrameRate = 60;
+    }
+    private void Start()
+    {
+        if (IsDebug)
+        {
+            OnNewLevelLoaded();
+        }
+        LevelManager.onLevelRendered += OnNewLevelLoaded;
+    }
+    private void OnDisable()
+    {
+        LevelManager.onLevelRendered -= OnNewLevelLoaded;
+    }
+    private void OnNewLevelLoaded()
+    {
+        actor = GameObject.FindGameObjectWithTag("Player").transform;
+        finishLine = GameObject.FindGameObjectWithTag("FinishLine").transform;
+        UIManager manager = FindObjectOfType<UIManager>();
+        manager.SetProgresBarMaxValue(finishLine.transform.position.z);
+    }
+    private void Update()
+    {
+        
     }
 }

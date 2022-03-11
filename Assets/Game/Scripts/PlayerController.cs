@@ -1,10 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Animator anim;
+    private void Awake()
+    {
+        anim = GetComponent<Character>().anim;
+    }
     void Start()
     {
         InputManager.Instance.onTouchStart += ProcessPlayerSwere;
@@ -21,6 +26,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         ProcessPlayerForwardMovement();
+
+        PlayAnimations();
+    }
+
+    private void PlayAnimations()
+    {
+        anim.SetBool("GameStarted", GameManager.Instance.currentState == GameManager.GameState.Normal);
+        anim.SetBool("FightStarted", GameManager.Instance.currentState == GameManager.GameState.Fight);
     }
 
     private void ProcessPlayerForwardMovement()
