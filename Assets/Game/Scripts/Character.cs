@@ -18,7 +18,9 @@ public class Character : MonoBehaviour
     public Material currentMaterial;
     public Animator anim;
     public SkinnedMeshRenderer skinnedMesh;
-    public NavMeshAgent agent; 
+    public NavMeshAgent agent;
+    public Transform hand;
+    public Transform leg;
 
     private void Awake()
     {

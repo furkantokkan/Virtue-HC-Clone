@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Cinemachine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
     public Transform actor;
     public Transform finishLine;
 
+    public CinemachineVirtualCamera[] cameras;
+
 
     private void Awake()
     {
@@ -117,6 +119,9 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        
+        if (currentState == GameState.Fight)
+        {
+            cameras[1].Priority = 2;
+        }
     }
 }
