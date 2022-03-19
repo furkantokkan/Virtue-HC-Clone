@@ -14,12 +14,14 @@ public class PlayerController : MonoBehaviour
     {
         InputManager.Instance.onTouchStart += ProcessPlayerSwere;
         InputManager.Instance.onTouchMove += ProcessPlayerSwere;
+        InputManager.Instance.onTouchStart += Attack;
     }
 
     private void OnDisable()
     {
         InputManager.Instance.onTouchStart -= ProcessPlayerSwere;
         InputManager.Instance.onTouchMove -= ProcessPlayerSwere;
+        InputManager.Instance.onTouchStart -= Attack;
     }
 
     // Update is called once per frame
@@ -103,5 +105,16 @@ public class PlayerController : MonoBehaviour
             transform.localScale.y - GameManager.Instance.playerGrowSize,
             transform.localScale.z - GameManager.Instance.playerGrowSize);
         GameManager.Instance.playerSize--;
+    }
+
+    private void Attack()
+    {
+        if (GameManager.Instance.currentState == GameManager.GameState.Fight)
+        {
+            if (!anim.IsInTransition(0) && anim.GetCurrentAnimatorStateInfo(0).IsName("FightIdle"))
+            {
+                anim.SetTrigger(GetComponent<Fight>().GetRandomAttackAnimation());
+            }
+        }
     }
 }

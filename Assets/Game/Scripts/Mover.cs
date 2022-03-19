@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Mover : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Mover : MonoBehaviour
         {
             targetDir = transform.position;
         }
+
         transform.position = Vector3.Lerp(transform.position, targetDir, GameManager.Instance.playerSmooth * Time.deltaTime);
     }
 }

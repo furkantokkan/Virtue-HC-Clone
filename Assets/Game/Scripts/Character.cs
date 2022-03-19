@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Character : MonoBehaviour
 {
@@ -17,10 +18,12 @@ public class Character : MonoBehaviour
     public Material currentMaterial;
     public Animator anim;
     public SkinnedMeshRenderer skinnedMesh;
+    public NavMeshAgent agent; 
 
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
+        agent = GetComponent<NavMeshAgent>();
         skinnedMesh = anim.GetComponentInChildren<SkinnedMeshRenderer>();
         currentMaterial = skinnedMesh.materials[0];
     }
