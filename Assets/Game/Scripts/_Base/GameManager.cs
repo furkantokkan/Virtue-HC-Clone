@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
 
     public CinemachineVirtualCamera[] cameras;
 
+    private bool onWin = false;
+
 
     private void Awake()
     {
@@ -122,6 +124,21 @@ public class GameManager : MonoBehaviour
         if (currentState == GameState.Fight)
         {
             cameras[1].Priority = 2;
+        }
+
+        if (currentState == GameState.Victory)
+        {
+            if (onWin == false)
+            {
+                print("Win Event");
+                onWinEvent?.Invoke();
+                onWin = true;
+            }
+            print("Victory");
+        }
+        else if (currentState == GameState.Failed)
+        {
+
         }
     }
 }

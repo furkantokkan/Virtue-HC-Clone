@@ -35,6 +35,7 @@ public class Fight : MonoBehaviour
             if (character.currentCharacterID == Character.CharacterID.Player)
             {
                 GameManager.Instance.currentState = GameManager.GameState.Failed;
+                GameManager.onLoseEvent?.Invoke();
             }
             else if (character.currentCharacterID == Character.CharacterID.Boss)
             {
